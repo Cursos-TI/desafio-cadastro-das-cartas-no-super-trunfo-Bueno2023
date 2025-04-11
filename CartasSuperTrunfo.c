@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-int main() {
+int main()
+{
     // Dados da Carta 1
     char estado1;
     char codigo_carta1[10];
@@ -48,7 +49,7 @@ int main() {
     scanf("%d", &pontos_turisticos1);
 
     // Cálculo da densidade populacional e PIB per capita
-    densidade1 = populacao1/area1;
+    densidade1 = populacao1 / area1;
     // Convertendo PIB de bilhões para reais
     pibPerCapita1 = (PIB1 * 1000000000) / populacao1;
 
@@ -77,10 +78,13 @@ int main() {
     scanf("%d", &pontos_turisticos2);
 
     // Cálculo da densidade populacional e PIB per capita
-    densidade2 = populacao2/area2;
+    densidade2 = populacao2 / area2;
     // Convertendo PIB de bilhões para reais
     pibPerCapita2 = (PIB2 * 1000000000) / populacao2;
 
+    const char *nome1 = "São Paulo (SP)";
+    const char *nome2 = "Rio de Janeiro (RJ)";
+    const char *vencedora = NULL;
 
     // Impressão dos Dados das Cartas
     printf("\nDados da Carta 1: \n");
@@ -93,8 +97,6 @@ int main() {
     printf("Número de Pontos Turísticos: %d \n", pontos_turisticos1);
     printf("Densidade Populacional: %.2f hab/km² \n", densidade1);
     printf("PIB per Capita: %.2f reais \n", pibPerCapita1);
-  
-
 
     printf("\nDados da Carta 2: \n");
     printf("Estado: %c \n", estado2);
@@ -106,7 +108,32 @@ int main() {
     printf("Número de Pontos Turísticos: %d \n", pontos_turisticos2);
     printf("Densidade Popucional: %.2f hab/km² \n", densidade2);
     printf("PIB per Capita: %.2f reais \n", pibPerCapita2);
-    
+
+    // Comparação
+    // Se a população da carta 1 for maior que a da carta 2,
+    // armazena o nome da cidade da carta 1 como vencedora
+    if (populacao1 > populacao2)
+    {
+        vencedora = nome1;
+    }
+    else if (populacao2 > populacao1)
+    { // Se a população da carta 2 for maior que a da carta 1, armazena o nome da cidade da carta 2 como vencedora
+        vencedora = nome2;
+    }
+
+    printf("\nComparação de Cartas (Atributo: População): \n");
+    printf("Carta 1: %s: %d \n", nome1, populacao1);
+    printf("Carta 2: %s: %d \n", nome2, populacao2);
+
+    // Verifica se há uma vencedora definida (ou seja, não houve empate)
+    if (vencedora != NULL)
+    {
+        printf("Resultado: %s Venceu!\n", vencedora);
+    }
+    else
+    {
+        printf("Resultado: Empate técnico!\n");
+    }
 
     return 0;
 }
